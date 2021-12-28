@@ -1,0 +1,11 @@
+.images{
+    background-image: url("../image/logo.png");
+    filter: invert(68%) sepia(67%) saturate(519%) hue-rotate(179deg) brightness(107%) contrast(96%);
+    height: 50%;
+    width: 23.7%;
+    color: white;
+    opacity:0.1;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
