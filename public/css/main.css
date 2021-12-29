@@ -23,3 +23,16 @@ select {
 .inactive{
     display: none;
 }
+#job,.job{
+    border-radius: 25px;
+}
+#form{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#jobs{
+    border-radius: 25px;
+}
+.salary{
+    border-radius: 10px;
+}

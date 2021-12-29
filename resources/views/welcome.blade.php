@@ -23,7 +23,7 @@
         </style>
     </head>
     <body >
-    <header class="ml-28">
+    <header class="mx-auto" style="max-width: 1400px;">
         @include('Header.header')
     </header>
 {{--        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center py-4 sm:pt-0" id="selectoption">--}}

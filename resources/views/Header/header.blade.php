@@ -1,6 +1,6 @@
-<div>
+
 <div class="flex justify-between items-center px-4 py-6 bg-white">
-<div class="flex justify-between items-center px-24 py-4">
+<div class="flex justify-between items-center py-4">
     <div class="flex justify-between items-center">
     <img src="{{asset('image/logo.png')}}" class="rounded-full w-12 h-12">
     <span class="font-mono px-3 text-gray-600 px-2 hover:text-black"><b class="text-black">Tech</b> Employee</span>
@@ -11,7 +11,7 @@
                 <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
             </svg>
         </div>
-        <a href="#" class="font-mono text-gray-600 px-2 hover:text-black">Jobs</a>
+        <a href="/jobs" class="font-mono text-gray-600 px-2 hover:text-black">Jobs</a>
     </div>
     <div class="flex justify-between items-center text-center px-5">
         <div class="w-12 h-12 bg-indigo-300 rounded-full justify-center flex">
@@ -40,13 +40,13 @@
     </div>
 </div>
 
-<div class="flex justify-center items-center text-center mr-44">
+<div class="flex justify-center items-center text-center">
     <button class="w-24 border px-3 py-3 mr-4 rounded-lg font-mono shadow focus:border-indigo-700 hover:border-indigo-800">Login</button>
     <button class="w-24 border px-3 py-3 rounded-lg font-mono bg-indigo-500 text-white mr-10 shadow focus:bg-indigo-400 hover:border-indigo-800">Regiter</button>
 
 </div>
 </div>
-</div>
+
 
 
 
