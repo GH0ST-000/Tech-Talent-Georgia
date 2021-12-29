@@ -7,7 +7,7 @@
         <title>Tech Tallant Goergia</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="shortcut icon" href="{{asset('image/logo.png')}}">
-
+        <script src="{{asset('js/dropdown.js')}}"></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -23,10 +23,10 @@
         </style>
     </head>
     <body >
-    <header>
+    <header class="ml-28">
         @include('Header.header')
     </header>
-{{--        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center py-4 sm:pt-0">--}}
+{{--        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center py-4 sm:pt-0" id="selectoption">--}}
 {{--            @if (Route::has('login'))--}}
 {{--                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">--}}
 {{--                    @auth--}}
@@ -44,5 +44,10 @@
     <main>
         @include('main.main')
     </main>
+
+    <footer>
+        @include('Footer.footer')
+    </footer>
+
     </body>
 </html>

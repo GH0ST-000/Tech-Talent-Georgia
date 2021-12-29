@@ -1,4 +1,5 @@
-<div class="flex justify-between items-center px-4 py-6 bg-white border">
+<div>
+<div class="flex justify-between items-center px-4 py-6 bg-white">
 <div class="flex justify-between items-center px-24 py-4">
     <div class="flex justify-between items-center">
     <img src="{{asset('image/logo.png')}}" class="rounded-full w-12 h-12">
@@ -39,13 +40,13 @@
     </div>
 </div>
 
-<div class="flex justify-center items-center text-center">
+<div class="flex justify-center items-center text-center mr-44">
     <button class="w-24 border px-3 py-3 mr-4 rounded-lg font-mono shadow focus:border-indigo-700 hover:border-indigo-800">Login</button>
     <button class="w-24 border px-3 py-3 rounded-lg font-mono bg-indigo-500 text-white mr-10 shadow focus:bg-indigo-400 hover:border-indigo-800">Regiter</button>
 
 </div>
 </div>
-
 </div>
+
 
 

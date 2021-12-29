@@ -1,11 +1,25 @@
-.images{
-    background-image: url("../image/logo.png");
-    filter: invert(68%) sepia(67%) saturate(519%) hue-rotate(179deg) brightness(107%) contrast(96%);
-    height: 50%;
-    width: 23.7%;
-    color: white;
-    opacity:0.1;
-    background-repeat: no-repeat;
+.main{
+    width: 100%;
+    height: 100px;
     background-size: cover;
+    background-image: url("https://s3.eu-central-1.amazonaws.com/public.temicloud.io/images/uploads/7cbd5835-4ab5-4a2f-b3e5-437f33cbcf9e.png?q=80");
 
+}
+input {border:0;outline:0;}
+input:focus {outline:none!important;}
+
+select {border:0;outline:0;}
+select:focus {outline:none!important;}
+
+option {border:0;outline:0;}
+option:focus {outline:none!important;}
+select {
+    border:0px;
+    outline:0px;
+}
+.active{
+    display: block;
+}
+.inactive{
+    display: none;
 }
