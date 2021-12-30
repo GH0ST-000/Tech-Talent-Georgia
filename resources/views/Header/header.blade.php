@@ -3,7 +3,7 @@
 <div class="flex justify-between items-center py-4">
     <div class="flex justify-between items-center">
     <img src="{{asset('image/logo.png')}}" class="rounded-full w-12 h-12">
-    <span class="font-mono px-3 text-gray-600 px-2 hover:text-black"><b class="text-black">Tech</b> Employee</span>
+    <a href="/" class="font-mono px-3 text-gray-600 px-2 hover:text-black"><b class="text-black">Tech</b> Employee</a>
     </div>
     <div class="flex justify-between items-center text-center px-4">
         <div class="w-12 h-12 bg-indigo-300 rounded-full justify-center flex">
@@ -19,7 +19,7 @@
                 <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/>
             </svg>
         </div>
-        <a href="#" class="font-mono px-2 text-gray-600 px-2 hover:text-black">Courses</a>
+        <a href="/course" class="font-mono px-2 text-gray-600 px-2 hover:text-black">Courses</a>
     </div>
     <div class="flex justify-between items-center text-center px-5 ">
         <div class="w-12 h-12 bg-indigo-300 rounded-full justify-center flex">
@@ -27,7 +27,7 @@
           <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
             </svg>
         </div>
-        <a href="#" class="font-mono px-2 text-gray-600 px-2 hover:text-black">Events</a>
+        <a href="/events" class="font-mono px-2 text-gray-600 px-2 hover:text-black">Events</a>
     </div>
     <div class="flex justify-between items-center text-center px-5">
         <div class="w-12 h-12 bg-indigo-300 rounded-full justify-center flex">
@@ -36,7 +36,7 @@
                 <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
             </svg>
         </div>
-        <a href="#" class="font-mono px-2 text-gray-600 px-2 hover:text-black">Content</a>
+        <a href="/content" class="font-mono px-2 text-gray-600 px-2 hover:text-black">Content</a>
     </div>
 </div>
 
