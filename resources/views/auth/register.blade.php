@@ -1,8 +1,8 @@
-<x-guest-layout>
-    <x-auth-card>
+<x-guest-layout >
+    <x-auth-card class="bg-white">
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+{{--                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
             </a>
         </x-slot>
 
@@ -10,10 +10,20 @@
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
         <form method="POST" action="{{ route('register') }}">
+            <div class="flex justify-center items-center text-center justify-center">
+                <img src="https://temicloud.io/images/logo.png" class="w-36 h-12">
+            </div>
+            <div class="flex justify-center text-center mt-8">
+                <h1 class="font-semibold text-black text-3xl">Register</h1>
+            </div>
+
+            <div class="flex justify-center text-center mt-8">
+                <span class="text-gray-500 text-lg">Enter Your Credential</span>
+            </div>
             @csrf
 
             <!-- Name -->
-            <div>
+            <div class="mt-6">
                 <x-label for="name" :value="__('Name')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
@@ -46,7 +56,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                <a class="text-sm text-black hover:text-gray-500" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 

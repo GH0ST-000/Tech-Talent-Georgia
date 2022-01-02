@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+{{--                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
             </a>
         </x-slot>
 
@@ -13,10 +13,23 @@
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
         <form method="POST" action="{{ route('login') }}">
+            <div class="flex justify-center items-center text-center justify-center">
+                <img src="https://temicloud.io/images/logo.png" class="w-36 h-12">
+            </div>
+            <div class="flex justify-center text-center mt-8">
+                <h1 class="font-semibold text-black text-3xl">Login</h1>
+            </div>
+
+            <div class="flex justify-center text-center mt-8">
+                <span class="text-gray-800 text-lg">Welcome Back</span>
+            </div>
+            <div class="flex justify-center text-center mt-8">
+                <span class="text-gray-500 text-lg">Let’s connect. Access to your account.</span>
+            </div>
             @csrf
 
             <!-- Email Address -->
-            <div>
+            <div class="mt-6">
                 <x-label for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />

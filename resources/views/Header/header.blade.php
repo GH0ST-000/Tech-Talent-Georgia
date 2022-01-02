@@ -1,4 +1,3 @@
-
 <div class="flex justify-between items-center px-4 py-6 bg-white">
 <div class="flex justify-between items-center py-4">
     <div class="flex justify-between items-center">
@@ -40,10 +39,23 @@
     </div>
 </div>
 
-<div class="flex justify-center items-center text-center">
-    <button class="w-24 border px-3 py-3 mr-4 rounded-lg font-mono shadow focus:border-indigo-700 hover:border-indigo-800">Login</button>
-    <button class="w-24 border px-3 py-3 rounded-lg font-mono bg-indigo-500 text-white mr-10 shadow focus:bg-indigo-400 hover:border-indigo-800">Regiter</button>
+<div class="flex justify-center items-center text-center space-x-6">
+    @if (Route::has('login'))
+                        @auth
+                            <div class="w-12 h-12 rounded-full bg-indigo-300 flex justify-between items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 ml-2 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                           <a class="text-sm text-gray-700 dark:text-gray-500 cursor-pointer text-lg">{{\Illuminate\Support\Facades\Auth::user()->name}}</a>
+                        @else
+                            <a href="{{ route('login') }}" class="w-24 border px-3 py-3 mr-4 rounded-lg font-mono shadow focus:border-indigo-700 hover:border-indigo-800">Log in</a>
 
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="w-24 border px-3 py-3 rounded-lg font-mono bg-indigo-500 text-white mr-10 shadow focus:bg-indigo-400 hover:border-indigo-800">Register</a>
+                            @endif
+                        @endauth
+                @endif
 </div>
 </div>
 
