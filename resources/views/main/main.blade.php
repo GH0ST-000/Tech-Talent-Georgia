@@ -1,6 +1,6 @@
 <div class="main" style="height: 500px">
 <div class="flex items-center  justify-center text-center py-24">
-    <div class="" >
+    <div class="space-x-6" >
         <button class="border border-white px-4 py-3 rounded-full p-3 text-white font-mono">All</button>
         <button class="border border-white px-4 py-3 rounded-full p-3 text-black font-mono bg-white">Development</button>
         <button class="border border-white px-4 py-3 rounded-full p-3 text-black font-mono bg-white">Design</button>

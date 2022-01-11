@@ -36,4 +36,6 @@ select {
 .salary{
     border-radius: 10px;
 }
-
+#dropdown{
+    z-index: 1;
+}
