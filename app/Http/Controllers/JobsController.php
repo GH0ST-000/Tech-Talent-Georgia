@@ -1,83 +1,65 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use App\Http\Requests\JobsRequest;
 use App\Models\jobs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class JobsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        return view('profile.create_jobs');
+    }
+    public function ShowAddedJobs(){
+        $jobs = DB::table('jobs')->where('user_id', '=', Auth::user()->id)->get();
+        return view('profile.ViewJobs',['jobs'=>$jobs]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function LatestUpload(){
+        $jobs = DB::table('jobs')->where('user_id', '=', Auth::user()->id)->latest('created_at')->first();
+        return view('profile.LatestUpload',['jobs'=>$jobs]);
+    }
+
+    public function store(JobsRequest $request)
     {
-        //
+        $request->validated();
+        $newImageName=time().'-'.$request->file('image')->getClientOriginalName();
+        $request->image->move(public_path('images'),$newImageName);
+        DB::table('jobs')->insert([
+            'user_id' => Auth::user()->id,
+            'company_logo' => $newImageName,
+            'short_description'=>$request->short_description,
+            'company_name'=>$request->company_name,
+            'tags'=>$request->tags,
+            'salary'=>$request->salary,
+            'long_description'=>$request->long_description,
+            'fields'=>$request->fields,
+            'location'=>$request->location,
+            'seniority'=>$request->seniority,
+            'category'=>$request->category,
+            'commitment'=>$request->commitment
+        ]);
+        return redirect('/information')->with('message','Jobs Successfully Added !');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\jobs  $jobs
-     * @return \Illuminate\Http\Response
-     */
     public function show(jobs $jobs)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\jobs  $jobs
-     * @return \Illuminate\Http\Response
-     */
     public function edit(jobs $jobs)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\jobs  $jobs
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, jobs $jobs)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\jobs  $jobs
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(jobs $jobs)
     {
         //

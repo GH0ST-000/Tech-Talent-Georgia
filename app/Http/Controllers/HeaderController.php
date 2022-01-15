@@ -11,4 +11,5 @@ class HeaderController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\InformationController;
+use App\Http\Controllers\JobsController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,7 +13,14 @@ Route::get('/course',function (){return view('pages.cource');});
 Route::get('/content',function (){return view('pages.content');});
 Route::get('/events',function (){return view('pages.events');});
 Route::get('/logout',[HeaderController::class,'logout']);
-Route::get('account/information',[InformationController::class,'index'])->name('information');
 Route::get('/dashboard', function () {return view('welcome');})->middleware(['auth'])->name('dashboard');
 
+/* User Action */
+Route::prefix('user')->group(function (){
+    Route::get('/information',[InformationController::class,'index'])->name('information');
+    Route::get('/create_jobs',[JobsController::class,'index'])->name('create');
+    Route::post('/add_jobs',[JobsController::class,'store'])->name('add-jobs');
+    Route::get('/show-jobs',[JobsController::class,'ShowAddedJobs'])->name('jobs');
+    Route::get('/latest',[JobsController::class,'LatestUpload'])->name('latest');
+});
 require __DIR__.'/auth.php';
