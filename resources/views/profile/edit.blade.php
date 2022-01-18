@@ -1,3 +1,4 @@
+
 <x-link></x-link>
 <div class="min-h-full">
     <div class="fixed inset-0 flex z-40 lg:hidden" role="dialog" aria-modal="true">
@@ -32,7 +33,7 @@
                         Dashboard
                     </a>
 
-                    <a href="#" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                    <a href="{{route('jobs')}}" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                         <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                         </svg>
@@ -86,71 +87,78 @@
     <div class="lg:pl-64 flex flex-col">
         <main class="flex-1">
             <div class="hidden mt-8 sm:block">
-           <!-- TABLE -->
-                <div class="flex flex-col">
-                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <form action="{{route('update')}}" method="post" enctype="multipart/form-data" class="max-w-screen-sm mx-auto">
+                    @csrf
+                    <input type="hidden" value="{{$jobs->id}}" name="id">
+                    <span class="text-center items-center text-gray-700 text-xl">Edit Job</span>
+                    <div class="flex justify-center items-center text-center w-full py-6">
+                        <div class="block w-full space-y-6">
+                            <div class="w-full w-full border-b border-indigo-600">
+                                @if(!empty($jobs->company_logo))
+                                <img class="w-full h-44" src="{{asset('images/'.$jobs->company_logo)}}">
+                                    <input id="uploaded_image" type="file" name="image" class="w-full rounded-md border border-gray-300 hover:border-indigo-700 mt-4 pb-4">
+                                @else
+                                <input type="file" name="image" class="w-full rounded-md border border-gray-300 hover:border-indigo-700 pb-4">
+                                @endif
+                            </div>
+                            <div class="w-full w-full border-b border-indigo-600">
+                                <input  type="text" name="company_name" class="w-full rounded-md border border-gray-300 hover:border-indigo-700" placeholder="Company Name" value="{{$jobs->company_name}}">
+                            </div>
+                            <div class=" w-full border-b border-indigo-600">
+                                <input type="number" name="salary" class="w-full rounded-md border border-gray-300 hover:border-indigo-700" placeholder="Salary" value="{{$jobs->salary}}">
+                            </div>
+                            <div class=" w-full border-b border-indigo-600">
+                                <input type="text" name="tags" class="w-full rounded-md border border-gray-300 hover:border-indigo-700" placeholder="#tags" value="{{$jobs->tags}}">
+                            </div>
 
-                                <table class="min-w-full divide-y divide-gray-200">
-                                    <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Company Logo
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Jobs Salary
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Jobs Tag
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-center items-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Jobs Description
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left font-medium text-lg tracking-wider">
-                                            Action
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    @foreach($jobs as $job)
-                                    <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="{{asset('images/'.$job->company_logo)}}" alt="">
-                                                </div>
-                                                <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{$job->salary}}</div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                          {{$job->tags}}
-                                        </span>
-                                        </td>
-                                        <td class="px-6 py-4 text-sm text-gray-500">
-                                            {{$job->short_description}}
-                                        </td>
-                                        <td class="py-4 px-6 whitespace-nowrap text-sm font-medium">
-                                            <a href="job/edit/{{$job->id}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            /
-                                            <a href="job/delete/{{$job->id}}" class="text-red-600 hover:text-indigo-900">Delete</a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    @endforeach
-                                </table>
+                            <div class="w-full border-b border-indigo-600">
+                                <input type="text" name="fields" class="w-full rounded-md border border-gray-300 hover:border-indigo-700" placeholder="Fields" value="{{$jobs->field}}">
+                            </div>
+                            <div class="w-full border-b border-indigo-600">
+                                <input type="text" name="location" class="w-full outline-0 border-gray-300 hover:border-indigo-700" placeholder="Location" value="{{$jobs->location}}">
+                            </div>
+                            <div class="flex justify-between border-b border-indigo-700" id="plus" >
+                                <span class="text-gray-700 px-3">Description</span>
+                                <button onclick="openModal()" type="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="w-full space-y-4 hidden" id="description">
+                                <div class="w-full border-b border-indigo-600">
+                                    <input type="text" name="short_description" class="w-full px-3 py-2 border rounded-md hover:border-indigo-700" placeholder="Company Short Description" value="{{$jobs->short_description}}">
+                                </div>
+                                <div class="w-full border-b border-indigo-600">
+                                    <textarea placeholder="Long Description" rows="6" type="text" name="long_description" class="w-full rounded-md border border-gray-300 outline-none hover:border-indigo-700">{{$jobs->long_description}}</textarea>
+                                </div>
+                            </div>
+                            <div class="flex justify-between border-b border-indigo-700"id="pluss">
+                                <span class="text-gray-700 px-3">Additional</span>
+                                <button onclick="CoreDecription()" type="button">
+                                    <svg id="plus" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="w-full space-y-4 hidden" id="core-description">
+                                <div class="w-full border-b border-indigo-600">
+                                    <input type="text" name="seniority" class="w-full rounded-md border border-gray-300 hover:border-indigo-700" placeholder="Seniority" value="{{$jobs->seniority}}">
+                                </div>
+                                <div class="w-full border-b border-indigo-600">
+                                    <input type="text" name="category" class="w-full rounded-md border border-gray-300 hover:border-indigo-700" placeholder="Category" value="{{$jobs->category}}">
+                                </div>
+                                <div class="w-full border-b border-indigo-600">
+                                    <input type="text" name="commitment" class="w-full rounded-md border border-gray-300 hover:border-indigo-700" placeholder="Commitment" value="{{$jobs->commitment}}">
+                                </div>
+                            </div>
+                            <div class="hover:bg-indigo-500">
+                                <button class="w-full py-6 rounded-lg bg-indigo-600 text-white hove:bg-indigo-300">Edit Jobs</button>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                </form>
 
             </div>
         </main>

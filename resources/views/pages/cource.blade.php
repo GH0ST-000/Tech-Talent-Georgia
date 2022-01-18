@@ -1,7 +1,6 @@
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<link href="{{ asset('css/main.css') }}" rel="stylesheet">
+<x-link></x-link>
 <header class="mx-auto" style="max-width: 1500px">
-    @include('Header.header')
+    <x-main-header></x-main-header>
 </header>
 <div class=" mx-auto mt-6 bg-gray-50 border-b" style="max-width: 1500px">
     <h1 class=" font-medium text-4xl px-4 py-3">Find a <a class="text-indigo-600">tech</a> course that suits your passion</h1>
@@ -213,5 +212,5 @@
     </p>
 </div>
 <footer class="border-t mt-3">
-    @include('Footer.footer')
+   <x-footer></x-footer>
 </footer>

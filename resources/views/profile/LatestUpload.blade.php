@@ -1,4 +1,4 @@
-@include('Link.link')
+<x-link></x-link>
 <div class="min-h-full">
     <div class="fixed inset-0 flex z-40 lg:hidden" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true"></div>
@@ -32,20 +32,20 @@
                         Dashboard
                     </a>
 
-                    <a href="/user/show-jobs" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                    <a href="{{route('jobs')}}" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                         <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                         </svg>
                         My Jobs
                     </a>
 
-                    <a href="/user/latest" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                    <a href="" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                         <svg class="text-white group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         Latest Upload
                     </a>
-                    <a href="#" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                    <a href="{{route('statistic')}}" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-white group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
@@ -107,9 +107,6 @@
                                         <th scope="col" class="px-6 py-3 text-center items-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Jobs Description
                                         </th>
-                                        <th scope="col" class="px-6 py-3 text-left font-medium text-lg tracking-wider">
-                                            Action
-                                        </th>
                                     </tr>
                                     </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
@@ -137,24 +134,11 @@
                                             <td class="px-6 py-4 text-sm text-gray-500">
                                                 {{$jobs->short_description}}
                                             </td>
-                                            <td class="py-4 px-6 whitespace-nowrap text-sm font-medium">
-                                                <a href="/job/edit/{{$jobs->id}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                                /
-                                                <a href="/job/delete/{{$jobs->id}}" class="text-red-600 hover:text-indigo-900">Delete</a>
-                                            </td>
                                         </tr>
                                         </tbody>
-
                                 </table>
                             </div>
                         </div>
-                    </div>
-                    <div class="py-10">
-                    <a href="/show-more" class="bg-gray-300 rounded-full w-full py-4 flex justify-center items-center text-center ">Show More ?
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
-                        </svg>
-                    </a>
                     </div>
                 </div>
             </div>

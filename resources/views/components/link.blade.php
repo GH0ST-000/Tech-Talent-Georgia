@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.min.css" />
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <link rel="shortcut icon" href="{{asset('image/logo.png')}}">
 <script src="{{asset('js/profile.js')}}"></script>

@@ -4,17 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tech Talent Georgia</title>
-    @include('Link.link')
-
+    <x-link></x-link>
 </head>
 <body>
 <div class="min-h-full">
-
-    @include('profile.sidebar')
-
+  <x-sidebar></x-sidebar>
     <div class="lg:pl-64 flex flex-col">
         <main class="flex-1">
-            @include('profile.header')
+            <x-header></x-header>
             <div class="hidden mt-8 sm:block">
                 <div class="align-middle inline-block min-w-full border-b border-gray-200">
                     <table class="min-w-full">

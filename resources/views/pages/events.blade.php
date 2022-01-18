@@ -1,7 +1,6 @@
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<link href="{{ asset('css/main.css') }}" rel="stylesheet">
+<x-link></x-link>
 <header class="mx-auto" style="max-width: 1500px">
-    @include('Header.header')
+   <x-main-header></x-main-header>
 </header>
 <div class=" mx-auto" style="max-width: 1500px;">
     <div class="text-2xl px-4 font-semibold pb-4">
@@ -90,5 +89,5 @@
     </p>
 </div>
 <footer class="border-t mt-3">
-    @include('Footer.footer')
+   <x-footer></x-footer>
 </footer>

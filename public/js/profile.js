@@ -5,3 +5,9 @@ function myFunction() {
     }else
         element.classList.add("hidden");
 }
+
+function ImageUpload(){
+ var el = document.getElementById("uploaded_image");
+ console.log(el.value);
+}
+

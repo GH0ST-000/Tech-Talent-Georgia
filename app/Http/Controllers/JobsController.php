@@ -11,17 +11,37 @@ class JobsController extends Controller
 
     public function index()
     {
+        if (empty(Auth::user()->id)){
+            return  redirect('/');
+        }else
         return view('profile.create_jobs');
     }
     public function ShowAddedJobs(){
         $jobs = DB::table('jobs')->where('user_id', '=', Auth::user()->id)->get();
+
+        if (sizeof($jobs)==0){
+            return redirect(route('information'))->with('message','You Dont Have An Any Jobs Yet');
+        }else
         return view('profile.ViewJobs',['jobs'=>$jobs]);
     }
 
     public function LatestUpload(){
-        $jobs = DB::table('jobs')->where('user_id', '=', Auth::user()->id)->latest('created_at')->first();
+        $jobs = DB::table('jobs')
+            ->where('user_id', '=', Auth::user()->id)
+            ->orderBy('created_at','desc')
+            ->latest()
+            ->first();
+        if (empty($jobs)){
+            return redirect(route('information'))->with('message','You Dont Have An Any Jobs Yet');
+        }else
         return view('profile.LatestUpload',['jobs'=>$jobs]);
     }
+
+    public  function Statistic(){
+
+        return view('profile.staistic');
+    }
+
 
     public function store(JobsRequest $request)
     {
@@ -45,23 +65,38 @@ class JobsController extends Controller
         return redirect('/information')->with('message','Jobs Successfully Added !');
     }
 
-    public function show(jobs $jobs)
-    {
-        //
+    public function UserJobEdit($id){
+        $jobs=jobs::find($id);
+       return view('profile.edit',['jobs'=>$jobs]);
     }
 
-    public function edit(jobs $jobs)
+    public function UserJobUpdate(Request $request)
     {
-        //
+        $newImageName=time().'-'.$request->file('image')->getClientOriginalName();
+        $updated_job = DB::table('jobs')
+            ->where('id', $request->id)
+            ->update([
+                'user_id' => Auth::user()->id,
+                'company_logo' => $newImageName,
+                'short_description'=>$request->short_description,
+                'company_name'=>$request->company_name,
+                'tags'=>$request->tags,
+                'salary'=>$request->salary,
+                'long_description'=>$request->long_description,
+                'fields'=>$request->fields,
+                'location'=>$request->location,
+                'seniority'=>$request->seniority,
+                'category'=>$request->category,
+                'commitment'=>$request->commitment
+            ]);
+        if ($updated_job){
+            return redirect(route('latest'))->with('message','Jobs Successfully Updated !');
+        }
     }
 
-    public function update(Request $request, jobs $jobs)
-    {
-        //
-    }
-
-    public function destroy(jobs $jobs)
-    {
-        //
+    public function UserJobDelete($id){
+            $deleted_job=jobs::find($id);
+            $deleted_job->delete();
+            return redirect(route('information'))->with('message','Jobs Successfully Updated !');
     }
 }

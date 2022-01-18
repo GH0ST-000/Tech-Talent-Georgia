@@ -22,5 +22,9 @@ Route::prefix('user')->group(function (){
     Route::post('/add_jobs',[JobsController::class,'store'])->name('add-jobs');
     Route::get('/show-jobs',[JobsController::class,'ShowAddedJobs'])->name('jobs');
     Route::get('/latest',[JobsController::class,'LatestUpload'])->name('latest');
+    Route::get('/statistic',[JobsController::class,'Statistic'])->name('statistic');
+    Route::get('/job/edit/{id}',[JobsController::class,'UserJobEdit'])->name('edit');
+    Route::get('/job/delete/{id}',[JobsController::class,'UserJobDelete'])->name('delete');
+    Route::post('/update/job',[JobsController::class,'UserJobUpdate'])->name('update');
 });
 require __DIR__.'/auth.php';

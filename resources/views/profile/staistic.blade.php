@@ -1,4 +1,4 @@
-<x-link></x-link>
+@include('components.link')
 <div class="min-h-full">
     <div class="fixed inset-0 flex z-40 lg:hidden" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-600 bg-opacity-75" aria-hidden="true"></div>
@@ -32,7 +32,7 @@
                         Dashboard
                     </a>
 
-                    <a href="#" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                    <a href="{{route('jobs')}}" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                         <svg class="text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                         </svg>
@@ -45,7 +45,7 @@
                         </svg>
                         Latest Upload
                     </a>
-                    <a href="{{route('statistic')}}" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                    <a href="" class="text-white hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-white group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
@@ -86,72 +86,36 @@
     <div class="lg:pl-64 flex flex-col">
         <main class="flex-1">
             <div class="hidden mt-8 sm:block">
-           <!-- TABLE -->
-                <div class="flex flex-col">
-                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-
-                                <table class="min-w-full divide-y divide-gray-200">
-                                    <thead class="bg-gray-50">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Company Logo
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Jobs Salary
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Jobs Tag
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-center items-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Jobs Description
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 text-left font-medium text-lg tracking-wider">
-                                            Action
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    @foreach($jobs as $job)
-                                    <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="flex items-center">
-                                                <div class="flex-shrink-0 h-10 w-10">
-                                                    <img class="h-10 w-10 rounded-full" src="{{asset('images/'.$job->company_logo)}}" alt="">
-                                                </div>
-                                                <div class="ml-4">
-                                                    <div class="text-sm font-medium text-gray-900">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{$job->salary}}</div>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                          {{$job->tags}}
-                                        </span>
-                                        </td>
-                                        <td class="px-6 py-4 text-sm text-gray-500">
-                                            {{$job->short_description}}
-                                        </td>
-                                        <td class="py-4 px-6 whitespace-nowrap text-sm font-medium">
-                                            <a href="job/edit/{{$job->id}}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                            /
-                                            <a href="job/delete/{{$job->id}}" class="text-red-600 hover:text-indigo-900">Delete</a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    @endforeach
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                <div class="shadow-lg rounded-lg overflow-hidden">
+                    <div class="py-3 px-5 bg-gray-50 items-center text-center">Count People Who Saw Your Jobs</div>
+                    <canvas class="p-10" id="chartLine"></canvas>
                 </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const labels = ["January", "February", "March", "April", "May", "June","july","August","September","October","November","December"];
+                    const data = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: "View",
+                                backgroundColor: "hsl(252, 82.9%, 67.8%)",
+                                borderColor: "hsl(252, 82.9%, 67.8%)",
+                                data: [0, 10, 5, 2, 20, 30, 45,20,55,10,70,50],
+                            },
+                        ],
+                    };
 
+                    const configLineChart = {
+                        type: "line",
+                        data,
+                        options: {},
+                    };
+
+                    var chartLine = new Chart(
+                        document.getElementById("chartLine"),
+                        configLineChart
+                    );
+                </script>
             </div>
         </main>
     </div>
