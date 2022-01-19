@@ -19,7 +19,7 @@
         </style>
     </head>
             <body >
-            <header class="mx-auto" style="max-width: 1200px;">
+            <header class="mx-auto" style="max-width: 1400px;">
              <x-main-header></x-main-header>
             </header>
             <main>

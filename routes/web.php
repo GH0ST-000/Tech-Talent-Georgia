@@ -6,6 +6,7 @@ use App\Http\Controllers\JobsController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
+/* User Side */
 
 Route::get('/',[WelcomeController::class,'index']);
 Route::get('/jobs',function (){return view('pages.jobs');});
@@ -15,7 +16,7 @@ Route::get('/events',function (){return view('pages.events');});
 Route::get('/logout',[HeaderController::class,'logout']);
 Route::get('/dashboard', function () {return view('welcome');})->middleware(['auth'])->name('dashboard');
 
-/* User Action */
+/* Admin User Action */
 Route::prefix('user')->group(function (){
     Route::get('/information',[InformationController::class,'index'])->name('information');
     Route::get('/create_jobs',[JobsController::class,'index'])->name('create');
@@ -27,4 +28,11 @@ Route::prefix('user')->group(function (){
     Route::get('/job/delete/{id}',[JobsController::class,'UserJobDelete'])->name('delete');
     Route::post('/update/job',[JobsController::class,'UserJobUpdate'])->name('update');
 });
+
+/* Language  */
+
+
+
+
+
 require __DIR__.'/auth.php';

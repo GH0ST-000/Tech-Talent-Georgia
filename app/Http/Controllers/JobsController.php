@@ -11,7 +11,7 @@ class JobsController extends Controller
 
     public function index()
     {
-        if (empty(Auth::user()->id)){
+        if (is_null(Auth::user()->name)){
             return  redirect('/');
         }else
         return view('profile.create_jobs');
