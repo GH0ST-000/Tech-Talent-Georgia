@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\jobs;
+
 class WelcomeController extends Controller
 {
 
     public function index()
     {
-            return view('welcome');
+        $jobs=jobs::all()->take(4);
+            return view('welcome',['jobs'=>$jobs]);
 
     }
 

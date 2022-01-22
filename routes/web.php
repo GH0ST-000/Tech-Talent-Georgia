@@ -5,16 +5,19 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /* User Side */
 
 Route::get('/',[WelcomeController::class,'index']);
-Route::get('/jobs',function (){return view('pages.jobs');});
-Route::get('/course',function (){return view('pages.cource');});
-Route::get('/content',function (){return view('pages.content');});
-Route::get('/events',function (){return view('pages.events');});
+Route::get('/jobs',[PageController::class,'job']);
+Route::get('/course',[PageController::class,'cource']);
+Route::get('/content',[PageController::class,'content']);
+Route::get('/events',[PageController::class,'events']);
+
+
 Route::get('/logout',[HeaderController::class,'logout']);
 Route::get('/dashboard', function () {return view('welcome');})->middleware(['auth'])->name('dashboard');
 

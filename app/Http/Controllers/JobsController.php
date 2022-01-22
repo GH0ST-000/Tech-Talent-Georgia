@@ -62,7 +62,7 @@ class JobsController extends Controller
             'category'=>$request->category,
             'commitment'=>$request->commitment
         ]);
-        return redirect('/information')->with('message','Jobs Successfully Added !');
+        return redirect(route('information'))->with('message','Jobs Successfully Added !');
     }
 
     public function UserJobEdit($id){
