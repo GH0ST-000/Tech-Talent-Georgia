@@ -23,13 +23,26 @@
             </div>
         </div>
     @endif
-    <div class="mt-4 flex sm:mt-0 sm:ml-4">
-        <button type="button" class="order-1 ml-3 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:order-0 sm:ml-0">
-            Share
-        </button>
-        <a href="{{route('create')}}" type="button" class="order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:order-1 sm:ml-3">
-            Create New Jobs
+    <div class="mt-4 flex sm:mt-0 sm:ml-4 space-x-3">
+        <a href="{{route('create')}}" type="button" class="flex justify-center items-center space-x-3 text-center border border-indigo-500 py-1 px-3 rounded-full hover:bg-indigo-500 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-700 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span class="">Create New Jobs</span>
         </a>
+        <a href="{{route('create-course')}}" type="button" class="flex justify-center items-center space-x-3 text-center border border-indigo-500 py-1 px-3 rounded-full hover:bg-indigo-500 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-700 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span class="">Create New Course</span>
+        </a>
+        <a href="{{route('create-event')}}" type="button" class="flex justify-center items-center space-x-3 text-center border border-indigo-500 py-1 px-3 rounded-full hover:bg-indigo-500 hover:text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-700 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <span class="">Create New Event</span>
+        </a>
+
     </div>
 </div>
 <div class="px-4 mt-6 sm:px-6 lg:px-8">

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CourceController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\JobsController;
@@ -27,12 +29,10 @@ Route::prefix('user')->group(function (){
     Route::get('/job/edit/{id}',[JobsController::class,'UserJobEdit'])->name('edit');
     Route::get('/job/delete/{id}',[JobsController::class,'UserJobDelete'])->name('delete');
     Route::post('/update/job',[JobsController::class,'UserJobUpdate'])->name('update');
+    Route::get('/create_event',[EventController::class,'index'])->name('create-event');
+    Route::post('/add_event',[EventController::class,'store'])->name('add-event');
+    Route::get('/create_course',[CourceController::class,'index'])->name('create-course');
+    Route::post('/add_course',[CourceController::class,'store'])->name('add-course');
 });
-
-/* Language  */
-
-
-
-
 
 require __DIR__.'/auth.php';

@@ -1,41 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InformationController extends Controller
 {
 
     public function index()
     {
-        return view('profile.index');
-    }
-    public function create()
-    {
-        //
-    }
-    public function store(Request $request)
-    {
-        //
-    }
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+        $jobs = DB::table('jobs')->where('user_id', '=', \Auth::user()->id)->get();
+        $event = DB::table('events')->where('user_id', '=', \Auth::user()->id)->get();
+        return view('profile.index',[
+            'jobs'=>$jobs,
+            'events'=>$event
+        ]);
     }
 }
