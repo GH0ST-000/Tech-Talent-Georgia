@@ -39,3 +39,10 @@ select {
 #dropdown{
     z-index: 1;
 }
+
+#show_job{
+    height: 300px;
+}
+#company{
+    margin-left: 43%;
+}

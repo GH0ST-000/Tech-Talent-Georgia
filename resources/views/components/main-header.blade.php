@@ -13,13 +13,13 @@
         </div>
         <a href="/jobs" class="font-mono text-gray-600 px-2 hover:text-black">Jobs</a>
     </div>
-    <div class="flex justify-between items-center text-center px-5">
+    <div class="flex justify-between items-center text-center ml-2">
         <div class="w-12 h-12 bg-indigo-300 rounded-full justify-center flex">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" hover:bg-indigo-500 hover:text-white bi bi-compass w-8 h-8 rounded-full mt-2 text-black bg-white" viewBox="0 0 16 16">
                 <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/>
             </svg>
         </div>
-        <a href="/course" class="font-mono px-2 text-gray-600 px-2 hover:text-black">Courses</a>
+        <a href="/course" class="font-mono px-3 text-gray-600 hover:text-black">Courses</a>
     </div>
     <div class="flex justify-between items-center text-center px-5 ">
         <div class="w-12 h-12 bg-indigo-300 rounded-full justify-center flex">

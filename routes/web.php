@@ -16,6 +16,7 @@ Route::get('/jobs',[PageController::class,'job']);
 Route::get('/course',[PageController::class,'cource']);
 Route::get('/content',[PageController::class,'content']);
 Route::get('/events',[PageController::class,'events']);
+Route::get('/show-more',[PageController::class,'show_more']);
 
 
 Route::get('/logout',[HeaderController::class,'logout']);
