@@ -146,6 +146,7 @@
                                <input type="text" name="commitment" class="w-full rounded-md border border-gray-300 hover:border-indigo-700" placeholder="Commitment">
                            </div>
                        </div>
+
                        <div class="hover:bg-indigo-500">
                            <button class="w-full py-6 rounded-lg bg-indigo-600 text-white hove:bg-indigo-300">Add New Job</button>
                        </div>

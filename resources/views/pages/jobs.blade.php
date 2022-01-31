@@ -56,7 +56,7 @@
     <div class="flex items-center">
         <img class="w-12 h-12 rounded-full ml-5" src="{{asset('images/'.$job->company_logo)}}">
         <div class="ml-4 flex space-x-3 text-center items-center">
-            <a href="#" class="text-md font-semibold">{{$job->short_description}}</a><br>
+            <a href="/show-more/{{$job->id}}" class="text-md font-semibold">{{$job->short_description}}</a><br>
             <a class="text-gray-300 left-0">{{$job->company_name}}</a>
         </div>
     </div>

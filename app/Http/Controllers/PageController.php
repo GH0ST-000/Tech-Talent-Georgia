@@ -30,10 +30,15 @@ class PageController extends Controller
 
    }
 
-   public function show_more(){
+   public function show_more($id){
+       $jobs=jobs::find($id);
+       $description=$jobs->long_description;
+       $text=explode('.',$description);
+       return view('pages.show-job',['jobs'=>$jobs,'text'=>$text]);
+    }
 
-       return view('pages.show-job');
-
+    public function applied(){
+       return view('pages.Aplied-Form');
     }
 
 }

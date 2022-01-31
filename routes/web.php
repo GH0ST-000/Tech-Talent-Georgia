@@ -12,15 +12,18 @@ use Illuminate\Support\Facades\Route;
 /* User Side */
 
 Route::get('/',[WelcomeController::class,'index']);
+Route::get('/logout',[HeaderController::class,'logout']);
+Route::get('/dashboard', function () {return view('welcome');})->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/',[WelcomeController::class,'index']);
 Route::get('/jobs',[PageController::class,'job']);
 Route::get('/course',[PageController::class,'cource']);
 Route::get('/content',[PageController::class,'content']);
 Route::get('/events',[PageController::class,'events']);
-Route::get('/show-more',[PageController::class,'show_more']);
-
-
-Route::get('/logout',[HeaderController::class,'logout']);
-Route::get('/dashboard', function () {return view('welcome');})->middleware(['auth'])->name('dashboard');
+Route::get('/show-more/{id}',[PageController::class,'show_more']);
+Route::get('/show-more/{id}',[PageController::class,'show_more']);
+Route::get('applied/',[PageController::class,'applied']);
 
 /* Admin User Action */
 Route::prefix('user')->group(function (){
